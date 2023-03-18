@@ -11,6 +11,10 @@ public class Equipo {
 		this.descripcion = descripcion;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
 	public void mostrarEquipo() {
 		System.out.println("ID: " + id);
 		System.out.println("Nombre: " + nombre);

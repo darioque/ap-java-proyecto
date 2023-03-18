@@ -13,13 +13,24 @@ public class Partido {
 		this.goles2 = goles2;
 	}
 
-	public String resultado() {
+	public ResultadoEnum resultado(Equipo equipo) {
 		if (goles1 > goles2) {
-			return "Gano " + equipo1;
+			if (equipo.equals(equipo1))
+				return ResultadoEnum.GANADOR;
+			else
+				return ResultadoEnum.PERDEDOR;
 		} else if (goles1 < goles2) {
-			return "Gano " + equipo2;
+			if (equipo.equals(equipo1))
+				return ResultadoEnum.PERDEDOR;
+			else
+				return ResultadoEnum.GANADOR;
 		} else {
-			return "Empate";
+			return ResultadoEnum.EMPATE;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "Partido [equipo1=" + equipo1.getNombre() + ", equipo2=" + equipo2.getNombre() + ", goles1=" + goles1 + ", goles2=" + goles2 + "]";
 	}
 }
