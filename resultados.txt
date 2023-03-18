@@ -1,0 +1,2 @@
+1|Argentina|1|2|2|Arabia Saudita
+3|Australia|0|0|4|Japón
