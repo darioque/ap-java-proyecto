@@ -11,13 +11,15 @@ public class Equipo {
 		this.descripcion = descripcion;
 	}
 
+	// Getter de nombre
 	public String getNombre() {
 		return nombre;
 	}
 
-	public void mostrarEquipo() {
-		System.out.println("ID: " + id);
-		System.out.println("Nombre: " + nombre);
-		System.out.println("Descripcion: " + descripcion);
+	// Sobreescritura del metodo toString para mostrar el equipo
+	// Esto hace que cuando se llame a System.out.println(equipo) se muestre así
+	@Override
+	public String toString() {
+		return "Equipo: " + nombre + "\nID: " + id + "\nDescripción: " + descripcion;
 	}
 }

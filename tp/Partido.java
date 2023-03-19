@@ -13,6 +13,7 @@ public class Partido {
 		this.goles2 = goles2;
 	}
 
+	// Determina el resultado del partido para un equipo en particular
 	public ResultadoEnum resultado(Equipo equipo) {
 		if (goles1 > goles2) {
 			if (equipo.equals(equipo1))
@@ -29,8 +30,9 @@ public class Partido {
 		}
 	}
 
+	// Sobreescritura del metodo toString para mostrar el partido
 	@Override
 	public String toString() {
-		return "Partido [equipo1=" + equipo1.getNombre() + ", equipo2=" + equipo2.getNombre() + ", goles1=" + goles1 + ", goles2=" + goles2 + "]";
+		return "Partido: " + equipo1.getNombre() + " " + goles1 + " - " + equipo2.getNombre() + " " + goles2;
 	}
 }
