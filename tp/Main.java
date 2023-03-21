@@ -15,14 +15,17 @@ public class Main {
 
 		// El bloque try-catch es para manejar errores de lectura de archivos
 		try {
-			// Leemos las lineas de los archivos y las guardamos en listas (son como arrays pero de tamaño dinamico)
+			// Leemos las lineas de los archivos y las guardamos en listas (son como arrays
+			// pero de tamaño dinamico)
 			List<String> resultadosLines = Files.readAllLines(Paths.get(resultadosFileName));
 			List<String> pronosticoLines = Files.readAllLines(Paths.get(pronosticoFileName));
-			// Iteramos sobre las lineas de los archivos (asumimos que existe la misma cantidad de partidos que pronosticos)
+			// Iteramos sobre las lineas de los archivos (asumimos que existe la misma
+			// cantidad de partidos que pronosticos)
 			for (int i = 0; i < resultadosLines.size(); i++) {
 				// Separamos los datos de cada linea de resultados.txt por el caracter |
 				String[] data = resultadosLines.get(i).split("\\|");
-				// Convertimos los datos a los tipos correspondientes e instanciamos los objetos (los datos obtenidos del archivo son Strings)
+				// Convertimos los datos a los tipos correspondientes e instanciamos los objetos
+				// (los datos obtenidos del archivo son Strings)
 				int id1 = Integer.parseInt(data[0]);
 				String nombre1 = data[1];
 				Equipo equipo1 = new Equipo(id1, nombre1, "Seleccionado");
@@ -37,7 +40,8 @@ public class Main {
 
 				// Separamos los datos de cada linea de pronosticos.txt por el caracter |
 				String[] pronosticoData = pronosticoLines.get(i).split("\\|");
-				// Obtenemos el resultado del pronostico dependiendo de la posicion de X en la linea (ver formato de pronosticos.txt)
+				// Obtenemos el resultado del pronostico dependiendo de la posicion de X en la
+				// linea (ver formato de pronosticos.txt)
 				ResultadoEnum resultado = null;
 				if (pronosticoData[1].equals("X")) {
 					resultado = ResultadoEnum.GANADOR;
@@ -50,15 +54,15 @@ public class Main {
 				Pronostico pronostico = new Pronostico(partido, equipo1, resultado);
 				// Imprimimos el pronostico y los puntos obtenidos
 				System.out.println(pronostico);
-				System.out.println("Puntos: " + pronostico.puntos());
+				System.out.println("\tPuntos: " + pronostico.puntos());
 				// Sumamos los puntos obtenidos al puntaje total
 				puntaje += pronostico.puntos();
 			}
-		// Manejamos los errores de lectura de archivos
+			// Manejamos los errores de lectura de archivos
 		} catch (IOException e) {
 			System.err.format("IOException: %s%n", e);
 		}
 		// Imprimimos el puntaje total
-		System.out.println("Puntaje total: " + puntaje);
+		System.out.println("\nPuntaje total: " + puntaje);
 	}
 }

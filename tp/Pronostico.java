@@ -10,9 +10,11 @@ public class Pronostico {
 		this.equipo = equipo;
 		this.resultado = resultado;
 	}
+
 	// Determina si el pronostico es correcto
 	public int puntos() {
-		// Si el resultado pronosticado es igual al resultado real del partido se obtiene 1 punto
+		// Si el resultado pronosticado es igual al resultado real del partido se
+		// obtiene 1 punto
 		ResultadoEnum resultadoReal = partido.resultado(equipo);
 		if (resultadoReal.equals(resultado)) {
 			return 1;
@@ -20,10 +22,10 @@ public class Pronostico {
 			return 0;
 		}
 	}
+
 	// Sobreescritura del metodo toString para mostrar el pronostico
 	@Override
 	public String toString() {
-		return "Pronostico: \n" + partido + "\nEquipo: " + equipo.getNombre() + "\nResultado: " + resultado;
+		return "Pronostico: \n\t" + partido + "\n\tEquipo: " + equipo.getNombre() + "\n\tResultado: " + resultado;
 	}
-
 }
