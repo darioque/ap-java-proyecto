@@ -7,8 +7,8 @@ import java.nio.file.Paths;
 public class Main {
 	public static void main(String[] args) {
 		// Ruta relativa a los archivos de resultados y pronostico
-		String resultadosFileName = "ap-java-proyecto\\resultados.txt";
-		String pronosticoFileName = "ap-java-proyecto\\pronostico.txt";
+		String resultadosFileName = "ap-java-proyecto\\resultados.csv";
+		String pronosticoFileName = "ap-java-proyecto\\pronostico.csv";
 		// Variable para acumular el puntaje total
 		int puntaje = 0;
 
