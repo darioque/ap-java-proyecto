@@ -3,6 +3,7 @@ package tp;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
@@ -14,14 +15,14 @@ public class Main {
 
 		// El bloque try-catch es para manejar errores de lectura de archivos
 		try {
-			// Leemos las lineas de los archivos y las guardamos en arreglos
-			String[] resultadosLines = Files.readAllLines(Paths.get(resultadosFileName)).toArray(new String[0]);
-			String[] pronosticoLines = Files.readAllLines(Paths.get(pronosticoFileName)).toArray(new String[0]);
-			// Iteramos sobre las lineas de los archivos (asumimos que existe la misma
-			// cantidad de partidos que pronosticos)
-			for (int i = 0; i < resultadosLines.length; i++) {
-				// Separamos los datos de cada linea de resultados.txt por el caracter |
-				String[] data = resultadosLines[i].split("\\|");
+			// Leemos las lineas de los archivos y las guardamos en listas (son como arrays
+			// pero de tamaño dinamico)
+			List<String> resultadosLines = Files.readAllLines(Paths.get(resultadosFileName));
+			List<String> pronosticoLines = Files.readAllLines(Paths.get(pronosticoFileName));
+			// Iteramos sobre las lineas de los archivos
+			for (int i = 0; i < resultadosLines.size(); i++) {
+				// Separamos los datos de cada linea de resultados por el caracter |
+				String[] data = resultadosLines.get(i).split("\\|");
 				// Convertimos los datos a los tipos correspondientes e instanciamos los objetos
 				// (los datos obtenidos del archivo son Strings)
 				int id1 = Integer.parseInt(data[0]);
@@ -36,8 +37,8 @@ public class Main {
 				int goles2 = Integer.parseInt(data[3]);
 				Partido partido = new Partido(equipo1, equipo2, goles1, goles2);
 
-				// Separamos los datos de cada linea de pronosticos.txt por el caracter |
-				String[] pronosticoData = pronosticoLines[i].split("\\|");
+				// Separamos los datos de cada linea de pronosticos por el caracter |
+				String[] pronosticoData = pronosticoLines.get(i).split("\\|");
 				// Obtenemos el resultado del pronostico dependiendo de la posicion de X en la
 				// linea (ver formato de pronosticos.txt)
 				ResultadoEnum resultado = null;
